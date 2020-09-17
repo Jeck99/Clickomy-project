@@ -1,0 +1,23 @@
+<ngx-spinner bdColor="rgba(51,51,51,0.8)" size="large" color="#fff" type="ball-scale-multiple">
+    <img src="../../assets/Logo.png" alt="">
+    <p style="font-size: 20px; color: white">Loading...</p>
+</ngx-spinner>
+<div class="EpisodesPage">
+    <kendo-grid [data]="data" [pageSize]="state.take" [skip]="state.skip" [sort]="state.sort" [sortable]="true"
+        [pageable]="true" [selectable]="selectableSettings" [navigable]="true" (cellClick)="open($event)">
+        <kendo-grid-column field="Title" width="130"></kendo-grid-column>
+        <kendo-grid-column field="Released" width="200"></kendo-grid-column>
+        <kendo-grid-column field="Episode" width="50"></kendo-grid-column>
+        <kendo-grid-column field="imdbRating" width="50"></kendo-grid-column>
+    </kendo-grid>
+
+    <kendo-window title="{{showTitle}} season {{seasonNumber}}" *ngIf="windowOpened" (close)="close()" [minWidth]="250"
+        [width]="600">
+        <h2 class="epNa" *ngIf="selectedEpisode.imdbRating=='N/A'">Episode have not aired yet, Info dose not avaliable
+        </h2>
+        <h1>{{selectedEpisode.Title}}</h1>
+        <img src="{{selectedEpisode.Poster}}" width="600" height="400" alt="{{selectedEpisode.Poster}}">
+        <p>Runtime: <span>{{selectedEpisode.Runtime}}</span> Genre: <span>{{selectedEpisode.Genre}}</span> </p>
+        <p>{{selectedEpisode.Plot}}</p>
+    </kendo-window>
+</div>

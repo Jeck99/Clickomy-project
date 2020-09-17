@@ -1,0 +1,16 @@
+<div class="container"> 
+    <h1>Hi there! please choose a Tv show</h1>
+    <div class="example-wrapper">
+        <p>Tv Show:</p>
+        <kendo-dropdownlist [defaultItem]="'Select Tv Show...'" [data]="tvShowsList"
+            (selectionChange)="selectionChange($event)">
+        </kendo-dropdownlist>
+        <div *ngIf="showSeasonList.length">
+            <h1>Grate! next please choose a season</h1>
+            <p>Show Season:</p>
+            <kendo-dropdownlist [defaultItem]="'Select Season...'" [data]="showSeasonList"
+                (selectionChange)="selectSeason($event)">
+            </kendo-dropdownlist>
+        </div>
+    </div>
+</div>
